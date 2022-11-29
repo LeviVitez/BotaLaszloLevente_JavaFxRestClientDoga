@@ -13,25 +13,18 @@ public class CreateBabyController extends Controller {
     @FXML
     private TextField genderField;
     @FXML
-    private Spinner<Integer> hospitalField;
+    private TextField hospitalField;
     @FXML
     private  TextField birthDateField;
     @FXML
     private Button submitButton;
 
     @FXML
-    private void initialize() {
-        SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200, 30);
-        hospitalField.setValueFactory(valueFactory);
-    }
-
-    @FXML
     public void submitClick(ActionEvent actionEvent) {
         String name = nameField.getText().trim();
         String gender = genderField.getText().trim();
         String birthDate = birthDateField.getText().trim();
-        Integer hospital = hospitalField.getValue();
+        String hospital = hospitalField.getText();
         Baby newBaby = new Baby(0, name,gender,hospital,birthDate);
         Gson converter = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String json = converter.toJson(newBaby);
@@ -41,7 +34,7 @@ public class CreateBabyController extends Controller {
                 warning("baby added!");
                 nameField.setText("");
                 genderField.setText("");
-                hospitalField.getValueFactory().setValue(30);
+                hospitalField.setText("");
             } else {
                 String content = response.getContent();
                 error(content);

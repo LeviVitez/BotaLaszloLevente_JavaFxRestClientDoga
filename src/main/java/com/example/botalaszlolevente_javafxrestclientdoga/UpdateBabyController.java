@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -16,7 +14,7 @@ public class UpdateBabyController extends Controller {
     @FXML
     private TextField genderField;
     @FXML
-    private Spinner<Integer> hospitalField;
+    private TextField hospitalField;
     @FXML
     private  TextField birthDateField;
     @FXML
@@ -26,21 +24,15 @@ public class UpdateBabyController extends Controller {
         this.baby = baby;
         nameField.setText(this.baby.getName());
         genderField.setText(this.baby.getGender());
-        hospitalField.getValueFactory().setValue(this.baby.getHospital());
+        hospitalField.setText(this.baby.getHospital());
         birthDateField.setText(this.baby.getBirthDate());
-    }
-    @FXML
-    private void initialize() {
-        SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200, 30);
-        hospitalField.setValueFactory(valueFactory);
     }
     @FXML
     public void updateClick(ActionEvent actionEvent) {
         String name = nameField.getText().trim();
         String gender = genderField.getText().trim();
         String birthDate = birthDateField.getText().trim();
-        Integer age = hospitalField.getValue();
+        String age = hospitalField.getText();
         if (name.isEmpty()) {
             warning("Name is required");
             return;

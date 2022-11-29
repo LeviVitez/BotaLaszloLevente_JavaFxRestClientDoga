@@ -9,11 +9,11 @@ public class Baby {
     @Expose
     private String gender;
     @Expose
-    private Integer hospital;
+    private String hospital;
     @Expose
     private String birthDate;
 
-    public Baby(int id, String name, String gender, Integer hospital, String level) {
+    public Baby(int id, String name, String gender, String hospital, String level) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -38,10 +38,10 @@ public class Baby {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public Integer getHospital() {
+    public String getHospital() {
         return hospital;
     }
-    public void setHospital(Integer hospital) {
+    public void setHospital(String hospital) {
         this.hospital = hospital;
     }
     public String getBirthDate() {
