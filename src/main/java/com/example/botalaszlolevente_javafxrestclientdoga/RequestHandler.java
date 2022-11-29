@@ -51,7 +51,6 @@ public final class RequestHandler {
         writer.close();
         os.close();
     }
-
     private static Response getResponse(HttpURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
         InputStream is = null;

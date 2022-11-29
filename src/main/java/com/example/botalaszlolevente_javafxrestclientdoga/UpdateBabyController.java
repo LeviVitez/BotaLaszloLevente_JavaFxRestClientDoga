@@ -8,7 +8,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class UpdateBabyController extends Controller {
@@ -22,9 +21,7 @@ public class UpdateBabyController extends Controller {
     private  TextField birthDateField;
     @FXML
     private Button updateButton;
-
     private Baby baby;
-
     public void setBaby(Baby baby) {
         this.baby = baby;
         nameField.setText(this.baby.getName());
@@ -32,14 +29,12 @@ public class UpdateBabyController extends Controller {
         hospitalField.getValueFactory().setValue(this.baby.getHospital());
         birthDateField.setText(this.baby.getBirthDate());
     }
-
     @FXML
     private void initialize() {
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 200, 30);
         hospitalField.setValueFactory(valueFactory);
     }
-
     @FXML
     public void updateClick(ActionEvent actionEvent) {
         String name = nameField.getText().trim();
@@ -78,5 +73,4 @@ public class UpdateBabyController extends Controller {
             e.printStackTrace();
         }
     }
-
 }

@@ -9,10 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Optional;
-
 public class BabyController extends Controller {
     @FXML
     private Button insertButton;
@@ -30,7 +28,6 @@ public class BabyController extends Controller {
     private TableColumn<Baby, Integer> hospitalCol;
     @FXML
     private TableColumn<Baby, String> birthDateCol;
-
     @FXML
     private void initialize() {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -46,7 +43,6 @@ public class BabyController extends Controller {
             }
         });
     }
-
     private void loadBabiesFromServer() throws IOException {
         Response response = RequestHandler.get(BabyApp.BASE_URL);
         String content = response.getContent();
@@ -83,7 +79,6 @@ public class BabyController extends Controller {
             error("Could not load form", e.getMessage());
         }
     }
-
     @FXML
     public void updateClick(ActionEvent actionEvent) {
         int selectedIndex = babyTable.getSelectionModel().getSelectedIndex();
@@ -118,7 +113,6 @@ public class BabyController extends Controller {
             error("Could not load form", e.getMessage());
         }
     }
-
     @FXML
     public void deleteClick(ActionEvent actionEvent) {
         int selectedIndex = babyTable.getSelectionModel().getSelectedIndex();
@@ -126,7 +120,6 @@ public class BabyController extends Controller {
             warning("Please select a person from the list first");
             return;
         }
-
         Baby selected = babyTable.getSelectionModel().getSelectedItem();
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setHeaderText(String.format("Are you sure you want to delete %s?", selected.getName()));
